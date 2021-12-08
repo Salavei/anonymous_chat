@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+<body>
+<div class="title">Анонимный чат с шифрованием</div>
+<a class="button" href="javascript:location.reload(true)">Обновить чат</a>
+{% for msg in take_sms %}
+<div class="alert">
+    <img src="{% static 'Anonymous.png' %}" width="40" height="50" alt="Avatar"><h3 class="user">От: {{ msg.external_id }}</h3>
+    <h3  class="text">{{ msg.text }}</h3> <h3  class="time_send">Время отправления: {{ msg.created_at }}</h3>
+</div>
+{% endfor %}
+</body>
+</html>
